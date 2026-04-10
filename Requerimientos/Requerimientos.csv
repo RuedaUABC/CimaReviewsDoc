@@ -1,0 +1,59 @@
+ID,Requerimiento
+RF-001,"El sistema debera solicitar al usuario un correo electronico, contraseÃ±a y un rol para ser registrado."
+RF-002,El sistema debera permitir al usuario iniciar sesion con su correo electronico y contraseÃ±a.
+RF-003,El sistema debera permitir al usuario calificar negocios en una escala de 1 a 5 estrellas.
+RF-004,El sistema deberia permitir al usuario ordenar los negocios por calificacion.
+RF-005,El sistema deberia permitir al usuario buscar un negocio por nombre.
+RF-006,El sitema debera permitir al usuario publicar reseÃ±as.
+RF-007,El sitema debera permitir al usuario consultar reseÃ±as.
+RF-008,El sitema debera permitir al usuario consultar calificaciones.
+RF-009,El sistema deberia permitir al usuario editar sus reseÃ±as.
+RF-010,El sistema deberia permitir al usuario editar sus calificaciones.
+RF-011,El sistema deberia permitir al ususario reportar una reseÃ±a.
+RF-012,El sistema deberÃ¡ permitir al usuario ver el perfil de un negocio.
+RF-013,El sistema deberÃ¡ permitir al usuario eliminar sus propias reseÃ±as.
+RF-014,El sistema debera permitir a los vendedores agregar la informacion de su(s) negocio(s).
+RF-015,El sistema deberia permitir a los vendedores editar la informacion de su(s) negocio(s).
+RF-016,El sistema deberia permitir a los vendedores eliminar su(s) negocio(s).
+RF-017,El sistema debera permitir a los vendedores registrar un negocio solicitando el nombre del negocio.
+RF-018,El sistema debera permitir a los vendedores registrar productos en su(s) negocio(s).
+RF-019,El sistema debera permitir a los vendedores eliminar los productos de su(s) negocio(s).
+RF-020,El sistema debera permitir a los vendedores editar los productos de su(s) negocio(s).
+RF-021,El sistema debera permitir a los vendedores editar el nombre de su(s) negocio(s)
+RF-022,El sistema debera no permitir que los usuarios puedan acceder al panel de administraciÃ³n
+RF-023,El usuario debera ser capaz de recuperar su contraseÃ±a mediante un correo
+RF-024,El sistema permitira a los vendedores crear un punto de venta de su(s) negocio(s)
+RF-025,El sistema permitira a los vendedores editar un punto de venta de su(s) negocio(s)
+RF-026,El sistema permitira a los vendedores eliminar un punto de venta de su(s) negocio(s)
+RF-027,El sistema emitira notificaciones push a los usuarios para notificarlos de eventos
+RF-028,"El sistema debera solicitar al moderador nombre del evento, fecha de inicio, fecha de final, hora de inicio, hora de final y opcionalmente una descripciÃ³n para ser registrado un evento."
+RF-029,El sistema permitira a los moderadores agregar negocios a los evento
+RF-030,El sistema permitira a los moderadores eliminar negocios de los eventos
+RF-031,El sistema permitira a los moderadores editar la fecha de inicio de los eventos
+RF-032,El sistema permitira a los moderadores editar la fecha de final de los eventos
+RF-033,El sistema permitira a los moderadores editar la hora de inicio de los eventos
+RF-034,El sistema permitira a los moderadores editar la hora de final de los eventos
+RF-035,El sistema permitira a los moderadores editar el normbre de los eventos
+RF-036,El sistema permitira a los moderadores editar la descripciÃ³n de los eventos
+RF-037,El sistema permitira al usuario ver los negocios cercanos en relacion a su ubicacion
+RF-038,Los negocios podran solicitar unirse a un evento
+RF-039,El sistema deberÃ¡ permitir a los moderadores aprobar o rechazar solicitudes de negocios para eventos.
+RF-040,El sistema deberÃ¡ permitir a los usuarios ver los eventos activos dentro de la universidad.
+,
+NF-001,El sistema debera soportar un minimo de 1000 usuarios simultaneos sin degradar el rendimiento.
+NF-002,El sistema debera cargar en un maximo de 3 segundos.
+NF-003,El sistema debera realizar respaldos cada 3 meses.
+NF-004,El sistema debera garantizar un 95% de disponibilidad.
+NF-005,El sistema debera garantizar la seguridad de los datos del usuario mediante la encriptaciÃ³n
+NF-006,El sistema deberÃ¡ permitir escalar el nÃºmero de usuarios sin afectar el funcionamiento.
+NF-007,El sistema deberÃ¡ registrar logs de actividad del sistema.
+,
+RI-001,El sistema debera tener una interfaz responsiva.
+RI-002,El sistema deberÃ¡ utilizar la paleta de colores universitaria.
+RI-003,El sistema deberÃ¡ permitir navegar entre secciones mediante un menÃº principal.
+RI-004,El sistema deberÃ¡ mostrar los negocios en formato de lista o tarjetas.
+,
+RE-001,El sistema deberÃ¡ ser accesible Ãºnicamente para usuarios registrados de la universidad.
+RE-002,El sistema deberÃ¡ cumplir con las polÃ­ticas de privacidad de la universidad.
+RE-003,El sistema deberÃ¡ limitar el tamaÃ±o de las reseÃ±as a un mÃ¡ximo de 500 caracteres.
+RE-004,El sistema deberÃ¡ utilizar una base de datos relacional para el almacenamiento de la informaciÃ³n.

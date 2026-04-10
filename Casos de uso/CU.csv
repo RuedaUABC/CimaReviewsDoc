@@ -1,0 +1,76 @@
+Nombre,ID,Descripción,Actores Primarios,Actores Secundarios,pre condiciones del sistema,flujo principal,poscondiciones,flujos alternativos
+Registro de Usuarios,CU-001,Permite al usuario crear una cuenta en el sistema utilizando su correo electronico.,Usuario,N/A,"El usuario no debe estar registrado en el sistema.
+El usuario debe contar con un correo electronico valido.","1.- El usuario selecciona la opcion de registrarse.
+2.- El sistema muestra el formulario de registro.
+3.- El usuario ingresa:
+                  - Nombre
+                  - Correo electronico
+                  - Rol (Cliente/Vendedor)
+                  - Contraseña
+                  - Confirmacion de contraseña
+4.- El usuario presiona el boton de confirmar.
+5.- El sistema registra al usuario en la base de datos.
+6.- El sistema muestra un mensaje de registro exitoso.","El usuario queda registrado en la base de datos del sistema.
+Se crea un perfil de usuario activo.","Credenciales erroneas.
+Cancelar.
+Correo ya se encuentra registrado."
+Inicio de Sesion,CU-002,Permite al usuario iniciar sesion en el sistema.,Usuario registrado,N/A,El usuario debe estar registrado en el sistema.,"1.- El usuario selecciona la opcion de iniciar sesion.
+2.- El sistema muestra el formulario de inicio de sesion.
+3.- El usuario ingresa:
+                   - Correo electronico
+                   - Contraseña
+4.- El usuario presiona el boton de confirmar.
+5.- El sistema valida las credenciales del usuario.
+6.- El sistema redirige al usuario a la pagina principal.",El usuario obtiene acceso a su cuenta con una sesión activa.,"Credenciales incorrectas.
+El usuario no existe."
+Calificar Negocio,CU-003,Permite al usuario calificar negocios en una escala de 1 a 5 estrellas (RF-003).,Usuario registrado,N/A,"El usuario debe haber iniciado sesión.
+El negocio debe existir en el catálogo.","1.- El usuario ingresa al perfil del negocio.
+2.- El usuario selecciona la opción de calificar.
+3.- El usuario asigna una calificación de 1 a 5 estrellas.
+4.- El usuario confirma la calificación.
+5.- El sistema registra y promedia la calificación del negocio.",La calificación general del negocio se actualiza en el sistema.,"El usuario cancela la acción.
+El usuario ya había calificado (se actualiza su calificación anterior)."
+Buscar y Ordenar Negocios,CU-004,"Permite al usuario buscar un negocio por nombre u ordenarlos por calificación (RF-004, RF-005).",Usuario,N/A,El sistema debe tener negocios registrados.,"1.- El usuario navega a la sección de exploración.
+2.- El usuario ingresa un nombre en el buscador o selecciona el filtro de orden por calificación.
+3.- El sistema procesa la solicitud.
+4.- El sistema muestra la lista de negocios que coinciden con los criterios.",El usuario visualiza los resultados esperados.,No se encuentran negocios con el nombre especificado.
+Publicar Reseña,CU-005,Permite al usuario publicar reseñas textuales en el perfil de un negocio (RF-006).,Usuario registrado,N/A,El usuario debe haber iniciado sesión.,"1.- El usuario ingresa al perfil del negocio.
+2.- El usuario selecciona la opción de escribir reseña.
+3.- El usuario redacta su reseña.
+4.- El usuario presiona enviar.
+5.- El sistema guarda y publica la reseña en el perfil.",La reseña es visible públicamente en el perfil del negocio.,"El texto excede el límite de caracteres (RE-003).
+El usuario cancela la publicación."
+Ver Perfil de Negocio,CU-006,"Permite al usuario ver la información detallada, reseñas y calificaciones de un negocio (RF-007, RF-008, RF-012).",Usuario,N/A,El negocio debe estar activo en el sistema.,"1.- El usuario selecciona un negocio desde el catálogo o búsqueda.
+2.- El sistema consulta la base de datos.
+3.- El sistema despliega el perfil completo, mostrando calificaciones y lista de reseñas.",El usuario visualiza toda la información pública del negocio.,El negocio fue eliminado o se encuentra inactivo.
+Gestionar Reseña y Calificación,CU-007,"Permite al usuario editar o eliminar sus propias reseñas y calificaciones (RF-009, RF-010, RF-013).",Usuario registrado,N/A,El usuario debe tener al menos una reseña o calificación previamente publicada.,"1.- El usuario accede a su historial o al perfil del negocio.
+2.- Selecciona la opción de editar o eliminar sobre su reseña/calificación.
+3.- Si edita, modifica los datos y confirma.
+4.- Si elimina, el sistema pide confirmación y procesa el borrado.
+5.- El sistema actualiza la base de datos.",La reseña o calificación es modificada o eliminada permanentemente.,El usuario cancela la edición o eliminación.
+Reportar Reseña,CU-008,Permite al usuario reportar una reseña que considere inapropiada (RF-011).,Usuario registrado,Moderador,El usuario debe haber iniciado sesión.,"1.- El usuario visualiza una reseña específica.
+2.- El usuario selecciona la opción de reportar.
+3.- El usuario proporciona el motivo del reporte.
+4.- El sistema registra el reporte y notifica a los moderadores.",La reseña queda marcada en el sistema para revisión administrativa.,El usuario cancela el proceso.
+Registrar Negocio,CU-009,Permite a los vendedores agregar la información de sus negocios al sistema (RF-014).,Vendedor,N/A,El usuario debe tener el rol de Vendedor y haber iniciado sesión.,"1.- El vendedor selecciona la opción de agregar negocio.
+2.- El sistema muestra el formulario de registro.
+3.- El vendedor ingresa la información solicitada (nombre, descripción, etc.).
+4.- El vendedor guarda los datos.
+5.- El sistema registra el negocio en la base de datos.",El negocio es creado y queda listado en el catálogo del sistema.,"Faltan campos obligatorios por llenar.
+El vendedor cancela el registro."
+Gestionar Negocio,CU-010,"Permite a los vendedores editar o eliminar la información de sus propios negocios (RF-015, RF-016).",Vendedor,N/A,El vendedor debe ser el creador/propietario del negocio en el sistema.,"1.- El vendedor accede al panel de mis negocios.
+2.- Selecciona un negocio para editar o eliminar.
+3.- Si edita, actualiza la información y guarda.
+4.- Si elimina, el sistema solicita confirmación y desactiva el negocio.
+5.- El sistema aplica los cambios.",La información del negocio se actualiza o este deja de estar disponible en el sistema.,El vendedor cancela la acción.
+Consultar Eventos,CU-011,Permite a los usuarios ver los eventos activos dentro de la universidad (RF-040).,Usuario,N/A,N/A,"1.- El usuario ingresa a la sección de eventos.
+2.- El sistema consulta la base de datos por eventos vigentes.
+3.- El sistema muestra la lista o calendario de eventos activos.",El usuario visualiza la información de los eventos.,No hay eventos activos en ese momento.
+Solicitar Unión a Evento,CU-012,Permite a los negocios solicitar unirse a un evento universitario activo (RF-038).,Vendedor,Moderador,Debe existir un evento activo. El vendedor debe tener un negocio registrado.,"1.- El vendedor consulta los eventos activos.
+2.- Selecciona un evento y presiona solicitar participación.
+3.- El sistema genera la petición y la envía al panel de moderación.",Se genera una solicitud en estado pendiente de aprobación.,"El evento ya cerró sus inscripciones.
+El negocio ya había enviado una solicitud."
+Moderar Solicitudes de Eventos,CU-013,Permite a los moderadores aprobar o rechazar solicitudes de negocios para eventos (RF-039).,Moderador,Vendedor,Debe haber solicitudes pendientes enviadas por los vendedores.,"1.- El moderador accede al panel administrativo de eventos.
+2.- Visualiza la lista de solicitudes pendientes.
+3.- El moderador selecciona aprobar o rechazar para cada solicitud.
+4.- El sistema actualiza el estado y notifica al vendedor.",El negocio queda inscrito en el evento o su participación es denegada.,N/A

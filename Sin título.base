@@ -1,0 +1,8 @@
+views:
+  - type: list
+    name: Tabla
+    groupBy:
+      property: id
+      direction: ASC
+    order:
+      - file.name
