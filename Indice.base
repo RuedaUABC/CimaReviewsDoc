@@ -1,6 +1,9 @@
 views:
   - type: list
     name: Tabla
+    filters:
+      and:
+        - file.inFolder("Casos de uso")
     groupBy:
       property: id
       direction: ASC
