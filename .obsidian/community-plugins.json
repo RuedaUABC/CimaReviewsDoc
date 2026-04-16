@@ -1,5 +1,12 @@
 [
+<<<<<<< HEAD
   "copilot",
   "mermaid-popup",
   "obsidian-plantuml"
+=======
+  "obsidian-plantuml",
+  "copilot",
+  "obsidian-git",
+  "mermaid-popup"
+>>>>>>> e53efa0 (vault backup: 2026-04-16 10:52:50)
 ]
