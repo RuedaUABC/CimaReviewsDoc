@@ -1,3 +1,4 @@
+
 ### 1. WelcomeScreen
 
 ```plantuml
@@ -38,7 +39,6 @@ package "Modelos" {
 
 package "Screens (Widgets)" {
     class HomeScreen <<Stateless>>
-	    +list <Business> Negocios
 }
 
 ' Relaciones
