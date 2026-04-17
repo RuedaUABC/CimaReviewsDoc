@@ -9,7 +9,6 @@ classDiagram
             +String name
             +String email
             +Role role
-            +List~Review~ myReviews
             +login() Session
             +logout()
         }
@@ -28,9 +27,10 @@ classDiagram
 
         class Permission {
             <<enumeration>>
-            CREATE_REVIEW
             DELETE_ANY_REVIEW
-            MANAGE_BUSINESS
+            CREATE_BUSINESS
+            EDIT_ANY_BUSINESS
+            DELETE_ANY_BUSINESS
             BAN_USER
             VIEW_ANALYTICS
         }
@@ -79,7 +79,6 @@ classDiagram
 
     User "1" *-- "many" Role : posee
     User "1" o-- "1" Session : mantiene
-    User "1" *-- "many" Review : escribe
     
     Business "1" *-- "many" Product : ofrece
     Business "1" *-- "many" Review : recibe
@@ -114,15 +113,17 @@ classDiagram
     DashboardScreen *-- LogUserWidget
     DashboardScreen *-- LogBusinessWidget
     DashboardScreen *-- LogReportWidget 
-    LogUserWidget ..> User : muestra
-    LogBusinessWidget ..> Business : muestra
-    LogReportWidget ..> Report : muestra
+    LogUserWidget ..> User : muestra, elimina y edita
+    LogBusinessWidget ..> Business : muestra, elimina y edita
+    LogReportWidget ..> Report : muestra , elimina y edita
     RegisterUserScreen ..> User : genera
     RegisterBusinessScreen ..> Business : genera
     RegisterBusinessScreen o.. User : utiliza
     RegisterReportScreen ..> Report : genera
 
 ```
+
+
 
 
 
