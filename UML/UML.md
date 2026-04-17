@@ -35,13 +35,6 @@ classDiagram
             VIEW_ANALYTICS
         }
         
-        class Admin { }
-        class Customer { }
-        class Moderator { }
-        class Seller {
-            +List~Business~ businesses
-        }
-
         class Report {
             +String id
             +String reason
@@ -52,6 +45,7 @@ classDiagram
         class Business {
             +String id
             +String name
+            +User Owner
             +double avgRating
             +List~Product~ products
             +List~Review~ reviews
@@ -89,6 +83,8 @@ classDiagram
     
     Business "1" *-- "many" Product : ofrece
     Business "1" *-- "many" Review : recibe
+    Business "many" *-- "1" User : posee
+    
     
     Review "many" --> "1" User : autor
     
@@ -113,7 +109,6 @@ classDiagram
     UserProfileScreen ..> User : lee
     WriteReviewScreen ..> Review : genera
     BusinessDetailsScreen ..> Business : muestra
-    ReportFormScreen ..> Report : genera
     EventsScreen ..> Event : muestra
     MapScreen ..> Business : muestra
     DashboardScreen *-- LogUserWidget
@@ -122,7 +117,16 @@ classDiagram
     LogUserWidget ..> User : muestra
     LogBusinessWidget ..> Business : muestra
     LogReportWidget ..> Report : muestra
+    RegisterUserScreen ..> User : genera
+    RegisterBusinessScreen ..> Business : genera
+    RegisterBusinessScreen o.. User : utiliza
+    RegisterReportScreen ..> Report : genera
+
 ```
+
+
+
+
 
 
 
