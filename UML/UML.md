@@ -110,5 +110,17 @@ classDiagram
     UserProfileScreen ..> User : lee
     WriteReviewScreen ..> Review : genera
     BusinessDetailsScreen ..> Business : muestra
+    ReportFormScreen ..> Report : genera
+    EventsScreen ..> Event : muestra
+    MapScreen ..> Business : muestra
+    DashboardScreen *-- LogUserWidget
+    DashboardScreen *-- LogBusinessWidget
+    DashboardScreen *-- LogReportWidget 
+    LogUserWidget ..> User : muestra
+    LogBusinessWidget ..> Business : muestra
+    LogReportWidget ..> Report : muestra
 ```
+
+
+
 
