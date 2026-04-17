@@ -104,6 +104,9 @@ classDiagram
         class UserProfileScreen
         class WriteReviewScreen
         class BusinessDetailsScreen
+        LogUserWidget : List~User~
+	    LogBusinessWidget : List~Business~
+	    LogReportWidget : List~Report~
     end
 
     LoginScreen ..> Session : crea
@@ -120,6 +123,7 @@ classDiagram
     LogBusinessWidget ..> Business : muestra
     LogReportWidget ..> Report : muestra
 ```
+
 
 
 
