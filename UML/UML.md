@@ -85,7 +85,7 @@ classDiagram
     Business "many" *-- "1" User : posee
     
     
-    Review "many" --> "1" User : autor
+    Review "1" *-- "1" User : autor
     
     Report "many" --> "1" User : reportado por
     Report "many" --> "1" User : reporta a
