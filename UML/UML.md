@@ -3,22 +3,23 @@
 classDiagram
     direction TB
 
+    %% ============================
+    %% MODELS (Dominio)
+    %% ============================
     subgraph Models
         class User {
             +String id
             +String name
             +String email
             +Role role
-            +login() Session
-            +logout()
         }
-        
+
         class Session {
             -String token
             -bool active
             +isValid() bool
         }
-        
+
         class Role {
             <<abstract>>
             +List~Permission~ permissions
@@ -34,18 +35,18 @@ classDiagram
             BAN_USER
             VIEW_ANALYTICS
         }
-        
+
         class Report {
             +String id
             +String reason
             +User reporter
             +User reportedUser
         }
-        
+
         class Business {
             +String id
             +String name
-            +User Owner
+            +User owner
             +double avgRating
             +List~Product~ products
             +List~Review~ reviews
@@ -55,7 +56,7 @@ classDiagram
             +String name
             +double price
         }
-        
+
         class Review {
             +String id
             +double rating
@@ -70,58 +71,135 @@ classDiagram
         }
     end
 
-    %% Relaciones de Herencia y Composición
+    %% ============================
+    %% REPOSITORIES (Data Layer)
+    %% ============================
+    subgraph Repositories
+        class UserRepository {
+            +login(email,pass) Session
+            +logout()
+            +getUser(id) User
+            +registerUser(User u)
+        }
+
+        class BusinessRepository {
+            +getBusinesses() List~Business~
+            +getBusiness(id) Business
+            +createBusiness(Business b)
+            +deleteBusiness(id)
+        }
+
+        class ReviewRepository {
+            +createReview(Review r)
+            +deleteReview(id)
+        }
+
+        class ReportRepository {
+            +createReport(Report r)
+            +getReports() List~Report~
+        }
+
+        class EventRepository {
+            +getEvents() List~Event~
+        }
+    end
+
+    %% ============================
+    %% VIEWMODELS (Lógica de presentación)
+    %% ============================
+    subgraph ViewModels
+        LoginViewModel
+        UserProfileViewModel
+        WriteReviewViewModel
+        BusinessDetailsViewModel
+        EventsViewModel
+        MapViewModel
+        DashboardViewModel
+        RegisterUserViewModel
+        RegisterBusinessViewModel
+        RegisterReportViewModel
+    end
+
+    %% ============================
+    %% VIEWS (UI)
+    %% ============================
+    subgraph Views
+        LoginView
+        UserProfileView
+        WriteReviewView
+        BusinessDetailsView
+        EventsView
+        MapView
+        DashboardView
+        LogUserWidget
+        LogBusinessWidget
+        LogReportWidget
+    end
+
+    %% ============================
+    %% RELACIONES MODELS
+    %% ============================
     Role <|-- Admin
     Role <|-- Moderator
     Role <|-- Seller
     Role <|-- Customer
-    Role "many" o-- "many" Permission : contiene
 
-    User "1" *-- "many" Role : posee
-    User "1" o-- "1" Session : mantiene
-    
-    Business "1" *-- "many" Product : ofrece
-    Business "1" *-- "many" Review : recibe
-    Business "many" *-- "1" User : posee
-    
-    
-    Review "1" *-- "1" User : autor
-    
-    Report "many" --> "1" User : reportado por
-    Report "many" --> "1" User : reporta a
-    
-    Event "many" o-- "many" Business : participan
+    Role "many" o-- "many" Permission
+    User "1" *-- "many" Role
+    User "1" o-- "1" Session
 
-    %% Relaciones Screens
-    subgraph Screens_Widgets
-        direction LR
-        class LoginScreen
-        class UserProfileScreen
-        class WriteReviewScreen
-        class BusinessDetailsScreen
-        LogUserWidget : List~User~
-	    LogBusinessWidget : List~Business~
-	    LogReportWidget : List~Report~
-    end
+    Business "1" *-- "many" Product
+    Business "1" *-- "many" Review
+    Business "many" *-- "1" User
 
-    LoginScreen ..> Session : crea
-    UserProfileScreen ..> User : lee
-    WriteReviewScreen ..> Review : genera
-    BusinessDetailsScreen ..> Business : muestra
-    EventsScreen ..> Event : muestra
-    MapScreen ..> Business : muestra
-    DashboardScreen *-- LogUserWidget
-    DashboardScreen *-- LogBusinessWidget
-    DashboardScreen *-- LogReportWidget 
-    LogUserWidget ..> User : muestra, elimina y edita
-    LogBusinessWidget ..> Business : muestra, elimina y edita
-    LogReportWidget ..> Report : muestra , elimina y edita
-    RegisterUserScreen ..> User : genera
-    RegisterBusinessScreen ..> Business : genera
-    RegisterBusinessScreen o.. User : utiliza
-    RegisterReportScreen ..> Report : genera
+    Review "1" *-- "1" User
+
+    Report "many" --> "1" User : reportedUser
+    Report "many" --> "1" User : reporter
+
+    Event "many" o-- "many" Business
+
+    %% ============================
+    %% RELACIONES MVVM
+    %% ============================
+
+    %% VIEWS -> VIEWMODELS
+    LoginView *-- LoginViewModel
+    UserProfileView *-- UserProfileViewModel
+    WriteReviewView *-- WriteReviewViewModel
+    BusinessDetailsView *-- BusinessDetailsViewModel
+    EventsView *-- EventsViewModel
+    MapView *-- MapViewModel
+    DashboardView *-- DashboardViewModel
+
+    %% VIEWMODELS -> REPOSITORIES
+    LoginViewModel ..> UserRepository
+    UserProfileViewModel ..> UserRepository
+    WriteReviewViewModel ..> ReviewRepository
+    BusinessDetailsViewModel ..> BusinessRepository
+    EventsViewModel ..> EventRepository
+    MapViewModel ..> BusinessRepository
+    DashboardViewModel ..> UserRepository
+    DashboardViewModel ..> BusinessRepository
+    DashboardViewModel ..> ReportRepository
+    RegisterUserViewModel ..> UserRepository
+    RegisterBusinessViewModel ..> BusinessRepository
+    RegisterReportViewModel ..> ReportRepository
+
+	%% REPOSITORIES -> MODELS
+	EventRepository ..o Event
+	UserRepository ..o User
+	BusinessRepository ..o Business
+	ReportRepository ..o Report
+	ReviewRepository ..o  Review
+
+    %% WIDGETS -> MODELS
+    LogUserWidget ..> User
+    LogBusinessWidget ..> Business
+    LogReportWidget ..> Report
 
 ```
+
 
 
 
