@@ -2,7 +2,6 @@
 **ID:** CU-023  
 **Descripción:** Permite al administrador gestionar reportes.  
 **Actor:** Administrador  
-**Relación:** Incluye: Ver Reportes
 
 **Precondiciones:**
 
