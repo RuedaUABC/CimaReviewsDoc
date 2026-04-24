@@ -28,3 +28,25 @@
 **Excepciones:**
 
 - N/A.
+```plantuml
+@startuml
+
+actor Vendedor
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Vendedor -> Sistema: Accede a "Gestionar menú"
+activate Sistema
+Vendedor -> Sistema: Selecciona "Agregar producto"
+Sistema --> Vendedor: Muestra el formulario para nuevo producto
+Vendedor -> Sistema: Ingresa Nombre, Precio, Descripción, Categoría, Imagen
+Vendedor -> Sistema: Confirma
+Sistema -> DB: Guarda el producto (Nombre, Precio, Descripción, Categoría, Imagen, ID_Negocio)
+activate DB
+DB --> Sistema: Confirmación de guardado
+deactivate DB
+Sistema --> Vendedor: Mensaje de producto agregado exitosamente
+deactivate Sistema
+
+@enduml
+```

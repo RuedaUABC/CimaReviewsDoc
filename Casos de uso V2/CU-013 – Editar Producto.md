@@ -22,3 +22,25 @@
 **Excepciones:**
 
 - N/A.
+
+```plantuml
+@startuml
+
+actor Vendedor
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Vendedor -> Sistema: Selecciona un producto para editar
+activate Sistema
+Sistema --> Vendedor: Muestra los datos actuales del producto
+Vendedor -> Sistema: Modifica la información del producto
+Vendedor -> Sistema: Guarda los cambios
+Sistema -> DB: Actualiza el producto en la base de datos
+activate DB
+DB --> Sistema: Confirmación de actualización
+deactivate DB
+Sistema --> Vendedor: Mensaje de producto actualizado exitosamente
+deactivate Sistema
+
+@enduml
+```

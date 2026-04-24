@@ -24,3 +24,51 @@
 **Excepciones:**
 
 - N/A.
+
+
+
+```plantuml
+@startuml
+
+actor Vendedor
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Vendedor -> Sistema: Accede a uno de sus negocios
+activate Sistema
+Vendedor -> Sistema: Selecciona "Gestionar menú"
+Sistema --> Vendedor: Muestra los productos del negocio
+alt Agregar producto
+    Vendedor -> Sistema: Selecciona "Agregar producto"
+    Sistema --> Vendedor: Muestra formulario para nuevo producto
+    Vendedor -> Sistema: Ingresa detalles del producto
+    Vendedor -> Sistema: Confirma adición
+    Sistema -> DB: Guarda nuevo producto
+    activate DB
+    DB --> Sistema: Confirmación de guardado
+    deactivate DB
+    Sistema --> Vendedor: Mensaje de producto agregado
+else Editar producto
+    Vendedor -> Sistema: Selecciona un producto para editar
+    Sistema --> Vendedor: Muestra formulario con datos del producto
+    Vendedor -> Sistema: Modifica detalles del producto
+    Vendedor -> Sistema: Confirma edición
+    Sistema -> DB: Actualiza producto existente
+    activate DB
+    DB --> Sistema: Confirmación de actualización
+    deactivate DB
+    Sistema --> Vendedor: Mensaje de producto actualizado
+else Eliminar producto
+    Vendedor -> Sistema: Selecciona un producto para eliminar
+    Sistema --> Vendedor: Pide confirmación de eliminación
+    Vendedor -> Sistema: Confirma eliminación
+    Sistema -> DB: Elimina producto
+    activate DB
+    DB --> Sistema: Confirmación de eliminación
+    deactivate DB
+    Sistema --> Vendedor: Mensaje de producto eliminado
+end
+deactivate Sistema
+
+@enduml
+```

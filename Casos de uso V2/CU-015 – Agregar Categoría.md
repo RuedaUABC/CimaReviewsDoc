@@ -22,3 +22,41 @@
 **Excepciones:**
 
 - Opcionalmente crea una nueva categoría personalizada.
+
+```plantuml
+@startuml
+
+actor Vendedor
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Vendedor -> Sistema: Accede a "Agregar categoría"
+activate Sistema
+Sistema -> DB: Solicita categorías existentes
+activate DB
+DB --> Sistema: Envía lista de categorías
+deactivate DB
+Sistema --> Vendedor: Muestra categorías existentes
+alt Selecciona categoría existente
+    Vendedor -> Sistema: Selecciona una categoría
+    Vendedor -> Sistema: Confirma la selección
+    Sistema -> DB: Asocia categoría al menú del negocio
+    activate DB
+    DB --> Sistema: Confirmación de asociación
+    deactivate DB
+    Sistema --> Vendedor: Mensaje de categoría agregada
+else Crea nueva categoría personalizada
+    Vendedor -> Sistema: Selecciona opción "Crear nueva categoría"
+    Sistema --> Vendedor: Muestra formulario para nueva categoría
+    Vendedor -> Sistema: Ingresa nombre de la nueva categoría
+    Vendedor -> Sistema: Confirma creación
+    Sistema -> DB: Guarda nueva categoría y la asocia al menú
+    activate DB
+    DB --> Sistema: Confirmación de creación y asociación
+    deactivate DB
+    Sistema --> Vendedor: Mensaje de nueva categoría creada y agregada
+end
+deactivate Sistema
+
+@enduml
+```

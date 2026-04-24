@@ -26,3 +26,28 @@
 **Excepciones:**
 
 - Datos incompletos.
+
+
+
+```plantuml
+@startuml
+autonumber
+
+actor Vendedor
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Vendedor -> Sistema: 1. Accede a "Registrar negocio"
+activate Sistema
+Sistema --> Vendedor: 2. Muestra el formulario
+Vendedor -> Sistema: 3. Ingresa Nombre, Descripción, Ubicación, Imagen
+Vendedor -> Sistema: 4. Confirma
+Sistema -> DB: 5. Registra el negocio (Nombre, Descripción, Ubicación, Imagen, ID_Vendedor)
+activate DB
+DB --> Sistema: Confirmación de registro
+deactivate DB
+Sistema --> Vendedor: Mensaje de negocio registrado exitosamente
+deactivate Sistema
+
+@enduml
+```

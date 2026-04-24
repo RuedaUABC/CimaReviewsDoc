@@ -21,3 +21,30 @@
 **Excepciones:**
 
 - No hay productos disponibles.
+
+
+```plantuml
+@startuml
+
+actor Usuario
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Usuario -> Sistema: Accede a un negocio
+activate Sistema
+Sistema -> DB: Solicita la lista de productos del negocio
+activate DB
+alt Negocio tiene productos registrados
+    DB --> Sistema: Envía lista de productos y categorías
+    deactivate DB
+    Sistema --> Usuario: Muestra la lista de productos (menú)
+    Usuario <-> Sistema: Navega por categorías y productos
+else No hay productos disponibles
+    DB --> Sistema: No se encontraron productos
+    deactivate DB
+    Sistema --> Usuario: Muestra mensaje "No hay productos disponibles"
+end
+deactivate Sistema
+
+@enduml
+```

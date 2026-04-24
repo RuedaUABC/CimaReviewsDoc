@@ -26,3 +26,27 @@
 
 - N/A.
 
+
+
+```plantuml
+@startuml
+autonumber
+
+actor Usuario
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Usuario -> Sistema: 1. Selecciona "Escribir reseña"
+activate Sistema
+Sistema --> Usuario: 2. Muestra formulario de reseña
+Usuario -> Sistema: 3. Ingresa Calificación y Comentario
+Usuario -> Sistema: 4. Envía la reseña
+Sistema -> DB: 5. Guarda la reseña (Calificación, Comentario, ID_Usuario, ID_Negocio)
+activate DB
+DB --> Sistema: Confirmación de guardado
+deactivate DB
+Sistema --> Usuario: Mensaje de reseña guardada exitosamente
+deactivate Sistema
+
+@enduml
+```

@@ -21,3 +21,24 @@
 **Excepciones:**
 
 - N/A.
+
+```plantuml
+@startuml
+
+actor Usuario
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Usuario -> Sistema: Selecciona eliminar reseña
+activate Sistema
+Sistema --> Usuario: Solicita confirmación de eliminación
+Usuario -> Sistema: Confirma eliminación
+Sistema -> DB: Elimina la reseña
+activate DB
+DB --> Sistema: Confirmación de eliminación
+deactivate DB
+Sistema --> Usuario: Mensaje de reseña eliminada exitosamente
+deactivate Sistema
+
+@enduml
+```

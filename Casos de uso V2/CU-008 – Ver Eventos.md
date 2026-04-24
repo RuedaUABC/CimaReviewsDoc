@@ -21,3 +21,31 @@
 **Excepciones:**
 
 - No hay eventos.
+
+
+
+```plantuml
+@startuml
+
+actor Usuario
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Usuario -> Sistema: Accede a la sección de eventos
+activate Sistema
+Sistema -> DB: Solicita lista de eventos disponibles
+activate DB
+alt Hay eventos
+    DB --> Sistema: Envía lista de eventos
+    deactivate DB
+    Sistema --> Usuario: Muestra la lista de eventos
+    Usuario -> Sistema: Selecciona un evento
+else No hay eventos
+    DB --> Sistema: No se encontraron eventos
+    deactivate DB
+    Sistema --> Usuario: Muestra mensaje "No hay eventos disponibles"
+end
+deactivate Sistema
+
+@enduml
+```

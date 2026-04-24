@@ -21,3 +21,24 @@
 **Excepciones:**
 
 - N/A.
+
+
+```plantuml
+@startuml
+
+actor Usuario
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Usuario -> Sistema: Selecciona "Ver ubicación"
+activate Sistema
+Sistema -> DB: Solicita datos de ubicación (negocios/eventos)
+activate DB
+DB --> Sistema: Envía datos de ubicación
+deactivate DB
+Sistema --> Usuario: Abre el mapa y muestra ubicación con marcador
+Usuario <-> Sistema: Interactúa con el mapa (zoom, mover, etc.)
+deactivate Sistema
+
+@enduml
+```
