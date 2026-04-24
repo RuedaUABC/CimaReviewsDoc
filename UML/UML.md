@@ -47,6 +47,7 @@ classDiagram
             +String id
             +String name
             +User owner
+            +LatLng location
             +double avgRating
             +List~Product~ products
             +List~Review~ reviews

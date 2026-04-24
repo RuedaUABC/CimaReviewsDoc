@@ -20,3 +20,21 @@
 **Excepciones:**
 
 - No hay negocios disponibles.
+
+
+```plantuml
+@startuml
+autonumber
+
+actor Usuario
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Usuario -> Sistema: accede a la pantalla principal
+Sistema -> DB: solicita la lista de negocios
+DB --> Sistema: retorna lista de negocios
+Sistema -> Usuario:  muestra la lista de negocios. 
+
+
+@enduml
+```

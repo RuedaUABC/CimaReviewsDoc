@@ -32,3 +32,29 @@
 - Credenciales inválidas.
 - Correo ya registrado.
 - Cancelación del proceso.
+
+
+
+
+```plantuml
+@startuml
+autonumber
+
+actor Usuario
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Usuario -> Sistema: Selecciona opción de registrarse
+activate Sistema
+Sistema --> Usuario: Muestra formulario de registro
+Usuario -> Sistema: Ingresa Nombre, Correo, Rol, Contraseña, Confirmación
+Usuario -> Sistema: Presiona botón de confirmar
+Sistema -> DB: Registra usuario (Nombre, Correo, Rol, Contraseña)
+activate DB
+DB --> Sistema: Confirmación de registro
+deactivate DB
+Sistema --> Usuario: Muestra mensaje de registro exitoso
+deactivate Sistema
+
+@enduml
+```

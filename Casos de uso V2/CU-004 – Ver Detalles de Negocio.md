@@ -23,3 +23,20 @@
 **Excepciones:**
 
 - Negocio no disponible.
+
+```plantuml
+@startuml
+autonumber
+
+actor Usuario
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Usuario -> Sistema: selecciona un negocio
+Sistema -> DB: solicita la informacion de negocio
+DB --> Sistema: retorna la informacion de negocio
+Sistema -> Usuario:  muestra la informacion de negocio 
+
+
+@enduml
+```

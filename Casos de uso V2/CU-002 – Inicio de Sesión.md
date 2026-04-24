@@ -23,3 +23,31 @@
 
 - Credenciales incorrectas.
 - Usuario no registrado.
+
+
+
+```plantuml
+@startuml
+autonumber
+
+actor Usuario
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Usuario -> Sistema: Ingresa correo y contraseña
+Usuario -> Sistema: Presiona botón de iniciar sesión
+activate Sistema
+Sistema -> DB: Valida credenciales (correo, contraseña)
+activate DB
+DB --> Sistema: Credenciales válidas / inválidas
+deactivate DB
+alt Credenciales válidas
+    Sistema -> Sistema: Crea sesión activa
+    Sistema --> Usuario: Redirige al inicio
+else Credenciales inválidas
+    Sistema --> Usuario: Muestra mensaje de error (ej. "Credenciales incorrectas")
+end
+deactivate Sistema
+
+@enduml
+```
