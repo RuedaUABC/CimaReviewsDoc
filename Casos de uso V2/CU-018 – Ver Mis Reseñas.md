@@ -21,3 +21,23 @@
 
 - No hay reseñas.
 
+```plantuml 
+@startuml
+
+actor Usuario
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Usuario -> Sistema: El usuario accede a su perfil
+activate Sistema
+Sistema --> Usuario: muestra informarcion de perfil
+Usuario -> Sistema: Selecciona “Mis reseñas”.
+Sistema -> DB: solicita reseñas del usuario
+activate DB
+DB --> Sistema: envia reseñas del usuario
+deactivate DB
+Sistema --> Usuario: muestra reseñas del usuario
+deactivate Sistema
+
+@enduml
+```

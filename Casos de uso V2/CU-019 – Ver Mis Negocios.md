@@ -20,3 +20,24 @@
 **Excepciones:**
 
 - No hay negocios.
+
+```plantuml
+@startuml
+
+actor Usuario
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Usuario -> Sistema: El usuario accede a su perfil
+activate Sistema
+Sistema --> Usuario: muestra informarcion de perfil
+Usuario -> Sistema: Selecciona “Mis negocios”.
+Sistema -> DB: solicita reseñas del usuario
+activate DB
+DB --> Sistema: envia negocios del usuario
+deactivate DB
+Sistema --> Usuario: muestra negocios del usuario
+deactivate Sistema
+
+@enduml
+```

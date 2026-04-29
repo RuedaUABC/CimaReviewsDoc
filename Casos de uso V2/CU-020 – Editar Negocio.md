@@ -21,4 +21,32 @@
 
 **Excepciones:**
 
--  N/A.
+-  N/A
+
+```plantuml
+@startuml
+
+actor Usuario
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Usuario -> Sistema: Accede a "Mis negocios"
+activate Sistema
+Sistema -> DB: Solicita negocios del usuario
+activate DB
+DB --> Sistema: Envía lista de negocios
+deactivate DB
+Sistema --> Usuario: Muestra lista de negocios
+Usuario -> Sistema: Selecciona una negocio para editar
+Sistema --> Usuario: Muestra el contenido actual de la negocio
+Usuario -> Sistema: Modifica el contenido (nombre, descripcion)
+Usuario -> Sistema: Guarda los cambios
+Sistema -> DB: Actualiza la negocio en la base de datos
+activate DB
+DB --> Sistema: Confirmación de actualización
+deactivate DB
+Sistema --> Usuario: Mensaje de negocio actualizada exitosamente
+deactivate Sistema
+
+@enduml
+```
