@@ -25,3 +25,30 @@
 - Cancelación.
 
 
+
+```plantuml
+@startuml
+
+actor Usuario
+participant "Sistema" as Sistema
+database "Base de Datos" as DB
+
+Usuario -> Sistema: 1. Seleccionar opción "Reportar"
+activate Sistema
+Sistema --> Usuario: 2. Mostrar formulario de reporte (motivos, comentario)
+deactivate Sistema
+
+Usuario -> Sistema: 3. Seleccionar motivo de reporte
+activate Sistema
+Usuario -> Sistema: 4. Agregar comentario con detalles
+Usuario -> Sistema: 5. Enviar reporte
+Sistema -> DB: 6. Guardar reporte
+activate DB
+DB --> Sistema: 7. Reporte guardado
+deactivate DB
+Sistema --> Usuario: 8. Confirmar reporte registrado
+deactivate Sistema
+
+@enduml
+```
+

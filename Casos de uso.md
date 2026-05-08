@@ -1,3 +1,4 @@
+
 ![[CU-001 – Registro de Usuarios]]
 ![[CU-002 – Inicio de Sesión]]
 ![[CU-003 – Ver Negocios]]
@@ -15,3 +16,11 @@
 ![[CU-015 – Agregar Categoría]]
 ![[CU-016 – Editar Reseña]]
 ![[CU-017 – Eliminar Reseña]]
+![[CU-018 – Ver Mis Reseñas]]
+![[CU-018 – Ver Mis Reseñas]]
+![[CU-019 – Ver Mis Negocios]]
+![[CU-020 – Editar Negocio]]
+![[CU-021 – Reportar Reseña]]
+![[CU-022 – Ver Reportes]]
+![[CU-023 – Administrar Reportes]]
+![[CU-024 – Ver Detalles de Evento]]

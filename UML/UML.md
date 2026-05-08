@@ -51,7 +51,26 @@ classDiagram
             +double avgRating
             +List~Product~ products
             +List~Review~ reviews
+            +List~Categoy~ categories
         }
+
+		class Category {
+			<<Enumeration>>
+			VEGANO
+			CAFETERIA
+			ASIATICA
+			RAMEN
+			MEXICANA
+			DESAYUNOS
+			PANADERIA
+			SUSHI
+			PIZZA
+			HAMBURGUESAS
+			TACOS
+			ITALIANA
+			ENSALADAS
+			POSTRES
+		}
 
         class Product {
             +String name
@@ -152,6 +171,7 @@ classDiagram
     Business "1" *-- "many" Product
     Business "1" *-- "many" Review
     Business "many" *-- "1" User
+    Business "many" *-- Category
 
     Review "1" *-- "1" User
 
@@ -200,6 +220,7 @@ classDiagram
     LogReportWidget ..> Report
 
 ```
+
 
 
 
