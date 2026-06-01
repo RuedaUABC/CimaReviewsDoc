@@ -4,82 +4,122 @@ title Diagrama de Actividades - CimaReviews
 
 start
 
-:Usuario abre la aplicación;
+:Usuario abre el sistema;
 
 if (¿Tiene cuenta?) then (No)
+
   :Selecciona "Registrarse";
   :Ingresa datos de registro;
   :Sistema valida información;
 
   if (¿Datos válidos?) then (Sí)
-    :Sistema crea cuenta;
+    :Crear cuenta;
     :Registro exitoso;
   else (No)
     :Mostrar error de registro;
     stop
   endif
+
 endif
 
-:Usuario inicia sesión;
-:Ingresa correo y contraseña;
-:Sistema valida credenciales;
+:Iniciar sesión;
+:Ingresar correo;
+:Ingresar contraseña;
+:Validar credenciales;
 
-if (¿Credenciales correctas?) then (Sí)
+if (¿Credenciales válidas?) then (Sí)
 
-  :Mostrar pantalla principal;
-  :Visualizar negocios y eventos;
+  :Mostrar página principal;
+
+  :Consultar negocios;
 
   if (¿Selecciona negocio?) then (Sí)
 
-    :Mostrar detalles del negocio;
-    :Mostrar menú y reseñas;
+      :Mostrar perfil del negocio;
+      :Mostrar productos;
+      :Mostrar reseñas;
 
-    if (¿Desea escribir reseña?) then (Sí)
-      :Ingresar calificación y comentario;
-      :Guardar reseña;
-    endif
+      if (¿Desea escribir reseña?) then (Sí)
+          :Ingresar calificación;
+          :Ingresar comentario;
+          :Guardar reseña;
+          :Actualizar calificación promedio;
+      endif
 
-    if (¿Desea ver ubicación?) then (Sí)
-      :Mostrar mapa;
-    endif
+      if (¿Desea ver ubicación?) then (Sí)
+          :Consultar API de mapas;
+          :Mostrar ubicación;
+      endif
 
+  endif
+
+  :Consultar eventos;
+
+  if (¿Selecciona evento?) then (Sí)
+      :Mostrar detalles del evento;
   endif
 
   if (¿Usuario es vendedor?) then (Sí)
 
-    :Acceder a "Mis Negocios";
+      :Acceder a Mis Negocios;
 
-    if (¿Desea registrar negocio?) then (Sí)
-      :Ingresar información del negocio;
-      :Guardar negocio;
-    endif
+      if (¿Registrar negocio?) then (Sí)
+          :Capturar información;
+          :Crear negocio;
+      endif
 
-    if (¿Desea gestionar menú?) then (Sí)
+      if (¿Administrar negocio?) then (Sí)
 
-      :Mostrar productos;
+          fork
 
-      fork
-        :Agregar producto;
-      fork again
-        :Editar producto;
-      fork again
-        :Eliminar producto;
-      end fork
+              :Agregar producto;
 
-    endif
+          fork again
+
+              :Editar producto;
+
+          fork again
+
+              :Eliminar producto;
+
+          fork again
+
+              :Registrar punto de venta;
+
+          end fork
+
+      endif
+
+      if (¿Solicitar participación en evento?) then (Sí)
+          :Seleccionar evento;
+          :Enviar solicitud;
+      endif
 
   endif
 
-  if (¿Usuario es administrador?) then (Sí)
+  if (¿Usuario es moderador?) then (Sí)
 
-    :Acceder al dashboard;
+      :Gestionar eventos;
 
-    fork
-      :Administrar usuarios;
-    fork again
-      :Ver reportes;
-      :Administrar reportes;
-    end fork
+      fork
+
+          :Crear evento;
+
+      fork again
+
+          :Editar evento;
+
+      fork again
+
+          :Revisar solicitudes de participación;
+          :Aprobar o rechazar solicitud;
+
+      fork again
+
+          :Consultar reportes;
+          :Gestionar reportes;
+
+      end fork
 
   endif
 
